@@ -1,5 +1,6 @@
 package com.example.mindmapcloud_tlcn;
 
+import java.util.Random;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -18,13 +19,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
-public class MainActivity extends Activity implements OnTouchListener {
+public class MainActivity extends Activity implements OnTouchListener,
+		OnClickListener {
 
 	LinearLayout mLinearLayout;
 	RelativeLayout relLay;
-	TriButton m_button;
 	int iD = 1;
 	float x, y;
 	ImageView imageView;
@@ -60,39 +60,45 @@ public class MainActivity extends Activity implements OnTouchListener {
 		paintLine.setColor(Color.RED);
 
 		button = new ImageButton(this);
-		button1 = new ImageButton(this);
+		button.setOnClickListener(this);
 
 		imageView.setImageBitmap(bitmap);
 		canvas.drawRoundRect(new RectF(100, 200, 100 + 200, 200 + 100), 70, 70,
 				paintButton);
 
-		//addButton(button, 100, 100);
-		button.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
-			}
-		});
+		addButton(button);
 		imageView.setOnTouchListener(this);
 	}
 
-//	private void addButton(ImageButton button, float x, float y) {
-//		// TODO Auto-generated method stub
-//		button.setBackgroundResource(R.drawable.ic_launcher);
-//		button.setX(x);
-//		button.setY(y);
-//		button.setId(iD);
-//		iD++;
-//		x = x + 200;
-//		y = y + 200;
-//		relLay.addView(button, 200, 100);
-//		relLay.addView(new ImageButton(this), 200, 100);
-//	}
+	private void random() {
+		// TODO Auto-generated method stub
+		Random rd = new Random();
+		x = rd.nextInt((1000 - 2 + 1) + 2);
+		y = rd.nextInt((1000 - 2 + 1) + 2);
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		button1 = new ImageButton(getApplicationContext());
+		addButton(button1);
+		button1.setOnClickListener(this);
+	}
+
+	private void addButton(ImageButton button) {
+		// TODO Auto-generated method stub
+		random();
+		button.setBackgroundResource(R.drawable.ic_launcher);
+		button.setX(x);
+		button.setY(y);
+		button.setId(iD);
+		iD++;
+
+		relLay.addView(button, 200, 100);
+	}
 
 	private View addButtonNext(ImageButton button, float x, float y) {
-		
+
 		return button;
 	}
 
