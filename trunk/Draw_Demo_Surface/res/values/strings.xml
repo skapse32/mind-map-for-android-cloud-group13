@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Draw_Demo_Surface</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <color name="red">#FF0000</color>
+    <color name="xanh">#3333FF</color>
+    <color name="vang">#FFFF00</color>
+    <color name="cam">#FF3300</color>
+    <color name="tim">#660066</color>
+
+</resources>
